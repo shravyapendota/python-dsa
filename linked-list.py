@@ -16,6 +16,15 @@ class Single_linked_list:
             while current.next!=None:
                 current=current.next
             current.next=newnode
+        
+    
+    def insertBegin(self,value):
+        newnode=Node(value)
+        if self.head is None:
+            self.head=newnode
+        else:
+            newnode.next=self.head
+            self.head=newnode
 
     def dsply(self):
         if self.head is None:
@@ -29,22 +38,25 @@ class Single_linked_list:
 sll=Single_linked_list()
 
 while True:
-    print("1.Insert at last\
-          2.Display\
-          3. Exit")
+    print("1.Insert at last\" \
+         2.Insert in begining\
+          3.Display\
+          4. Exit")
     ch=int(input("enter choice: "))
     if ch==1:
         ele=int(input("enter element: "))
         sll.insertLast(ele)
     elif ch==2:
+        ele=int(input("enter element: "))
+        sll.insertBegin(ele)
+    elif ch==3:
         sll.dsply()
     else:
         break
 
 
-
-
 '''
+INSERT AT THE END
 step1:create new node
 step2: if head is Npne set head and poin tto newnode
 step3:exit

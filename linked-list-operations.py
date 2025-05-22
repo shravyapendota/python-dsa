@@ -1,10 +1,10 @@
 class Node:
-    def __init__(self, element):  # double underscores, bro
+    def __init__(self, element): 
         self.data = element
         self.next = None
 
 class SingleLinkedList():
-    def __init__(self):  # again, __init__, not _init_
+    def __init__(self):  
         self.head = None
 
     def insertBegin(self, ele):

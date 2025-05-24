@@ -122,6 +122,24 @@ class SingleLinkedList():
             print(temp.data, "deleted (after", key, ")")
             del temp
 
+    def nonPrime(self):
+        def is_prime(n):
+            if n <= 1:
+                return False
+            for i in range(2, int(n ** 0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+
+        temp = self.head
+        pos = 1
+        while temp is not None:
+            if not is_prime(pos):
+                print(temp.data)
+            temp = temp.next
+            pos += 1
+
+                
     def display(self):
         if self.head is None:
             print("List is empty")
@@ -132,36 +150,67 @@ class SingleLinkedList():
                 current = current.next
             print()
 
-# Menu-driven program
+# MENU-DRIVEN PROGRAM
 sll = SingleLinkedList()
+
 while True:
-    print("\n1. Insert@Begin\n2. Insert@Last\n3. Delete@Begin\n4. Delete@Last\n5. Insert before a node\n6. Insert after a node\n7. Display\n8. Exit")
+    print("\n--- Linked List Menu ---")
+    print("1. Insert at Beginning")
+    print("2. Insert at End")
+    print("3. Insert Before a Node")
+    print("4. Insert After a Node")
+    print("5. Delete from Beginning")
+    print("6. Delete from End")
+    print("7. Delete Before a Node")
+    print("8. Delete After a Node")
+    print("9. Display List")
+    print("10. Display Nodes at Non-Prime Positions")
+    print("11. Exit")
+
     ch = int(input("Enter your choice: "))
+
     if ch == 1:
-        ele = int(input("Enter the element to insert at beginning: "))
+        ele = int(input("Enter element: "))
         sll.insertBegin(ele)
+
     elif ch == 2:
-        ele = int(input("Enter the element to insert at last: "))
+        ele = int(input("Enter element: "))
         sll.insertLast(ele)
+
     elif ch == 3:
-        ele = int(input("Enter the element to insert: "))
-        key = int(input("Enter the node before which to insert: "))
+        ele = int(input("Enter element to insert: "))
+        key = int(input("Enter node before which to insert: "))
         sll.insertbeforeanode(ele, key)
+
     elif ch == 4:
-        ele = int(input("Enter the element to insert: "))
-        key = int(input("Enter the node after which to insert: "))
+        ele = int(input("Enter element to insert: "))
+        key = int(input("Enter node after which to insert: "))
         sll.insertafteranode(ele, key)
+
     elif ch == 5:
         sll.deleteBegin()
+
     elif ch == 6:
         sll.deleteLast()
-    elif ch==7:
-        sll.deleteBeforeNode()
-    elif ch==8:
-        sll.deleteBeforeNode
+
     elif ch == 7:
-        sll.display()
+        key = int(input("Enter node before which to delete: "))
+        sll.deleteBeforeNode(key)
+
     elif ch == 8:
+        key = int(input("Enter node after which to delete: "))
+        sll.deleteAfterNode(key)
+
+    elif ch == 9:
+        sll.display()
+
+    elif ch == 10:
+        print("Nodes at non-prime positions:")
+        sll.nonPrime()  # ✅ NO ARGUMENT NEEDED
+
+    elif ch == 11:
+        print("Bye. Go touch grass.")
         break
+
     else:
-        print("Invalid choice, try again.")
+        print("Invalid choice. Stop pressing random buttons.")

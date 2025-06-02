@@ -1,37 +1,36 @@
-def evaluate(expression):
-    stack = []
+class Postfix:
+    def _init_(self, expression):
+        self.expression = expression
+        self.stack = []
 
-    if " " in expression:
-        tokens = expression.split()
-    else:
-        tokens = list(expression)
+    def evaluate(self):
+        for ch in self.expression:
+            if ch.isdigit():
+                self.stack.append(int(ch))
+            elif ch in '+-*/':
+                b = self.stack.pop()
+                a = self.stack.pop()
 
-    for symbol in tokens:
-        if symbol.lstrip('-').isdigit():
-            stack.append(int(symbol))
-        else:
-            if len(stack) < 2:
-                return "Error: Not enough operands"
+                if ch == '+':
+                    result = a + b
+                elif ch == '-':
+                    result = a - b
+                elif ch == '*':
+                    result = a * b
+                elif ch == '/':
+                    result = a // b  
 
-            b = stack.pop()
-            a = stack.pop()
-
-            if symbol == '+':
-                result = a + b
-            elif symbol == '-':
-                result = a - b
-            elif symbol == '*':
-                result = a * b
-            elif symbol == '/':
-                if b == 0:
-                    return "Error: Division by zero"
-                result = int(a / b)
+                self.stack.append(result)
             else:
-                return f"Error: Unknown operator {symbol}"
+                print(f"Invalid character: {ch}")
+                return None
 
-            stack.append(result)
+        return self.stack.pop()
 
-    return stack.pop() if len(stack) == 1 else "Error: Invalid expression"
 
-exps = input("Enter postfix expression (with or without spaces): ")
-print(evaluate(exps))
+expr = input("Enter postfix expression: ")
+evaluator = Postfix(expr)
+result = evaluator.evaluate()
+
+if result is not None:
+    print("Result:", result)

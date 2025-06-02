@@ -47,6 +47,8 @@ class CircularLinkedList:
             current.next=self.head
             print(temp.data,"deleted")
             del temp
+
+
     def deleteLast(self):
         if self.head is None:
             print("List is empty ")
@@ -75,9 +77,7 @@ class CircularLinkedList:
                 break
         print(None)
     
-
-
-
+    
 cll = CircularLinkedList()
 
 

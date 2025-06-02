@@ -31,7 +31,7 @@ class SingleLinkedList():
             self.head = newnode
         else:
             prev = None
-            current = self.head
+            current = self.head 
             while current and current.data != key:
                 prev = current
                 current = current.next
@@ -206,11 +206,11 @@ while True:
 
     elif ch == 10:
         print("Nodes at non-prime positions:")
-        sll.nonPrime()  # ✅ NO ARGUMENT NEEDED
+        sll.nonPrime()
 
     elif ch == 11:
-        print("Bye. Go touch grass.")
+        print("Exit")
         break
 
     else:
-        print("Invalid choice. Stop pressing random buttons.")
+        print("Invalid choice")
